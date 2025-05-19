@@ -45,6 +45,11 @@ This is a Task Manager application with Laravel 12 and VUE 3.
     php artisan serve
     ```
 
+7. Run test (For Task CRUD Test):
+    ```bash
+    php artisan test
+    ```
+
 ## Demo Users
 - **Super Admin**: `superadmin@example.com`, Password: `password`
 - **Admin**: `admin@example.com`, Password: `password`
