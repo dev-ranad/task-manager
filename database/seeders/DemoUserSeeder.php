@@ -14,13 +14,6 @@ class DemoUserSeeder extends Seeder
      */
     public function run(): void
     {
-        $superAdmin = User::create([
-            'name' => 'Super Admin',
-            'email' => 'superadmin@example.com',
-            'password' => Hash::make('password'),
-        ]);
-
-
         $admin = User::create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',

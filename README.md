@@ -51,7 +51,6 @@ This is a Task Manager application with Laravel 12 and VUE 3.
     ```
 
 ## Demo Users
-- **Super Admin**: `superadmin@example.com`, Password: `password`
 - **Admin**: `admin@example.com`, Password: `password`
 - **User**: `user@example.com`, Password: `password`
 
