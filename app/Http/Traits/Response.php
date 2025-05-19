@@ -20,7 +20,6 @@ trait Response
 
             'authentication' => " Attempted request are Authenticated",
             'unauthentication' => " Attempted request are Unauthenticated",
-            'unauthenticated-permission' => " Attempted request are Unauthenticated Permission",
         ];
         return preg_replace('/(?<!^)(?=[A-Z])/', ' ', $module) . ($messages[$action] ?? 'Response value showing');
     }

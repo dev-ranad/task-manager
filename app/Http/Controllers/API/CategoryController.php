@@ -17,8 +17,7 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $model = new Category;
-        $query = $model::latest();
+        $query = Category::latest();
 
         $results = $query->get();
         $data = ['category' => $results];
