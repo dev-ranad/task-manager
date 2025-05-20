@@ -4,9 +4,14 @@
       <h2 class="h4 mb-0">Tasks</h2>
       <div>
         <span v-if="loading" class="badge bg-primary me-2">Loading...</span>
-        <router-link v-else to="/admin/task/create" class="btn btn-primary ms-2">
-          + New Task
-        </router-link>
+        <div v-else>
+          <router-link to="/admin/task/kanban" class="btn btn-info">
+            Kanban View
+          </router-link>
+          <router-link to="/admin/task/create" class="btn btn-primary ms-2">
+            + New Task
+          </router-link>
+        </div>
       </div>
     </div>
 
@@ -98,7 +103,9 @@
                     </router-link>
                   </li>
                   <li>
-                    <a class="dropdown-item cursor-pointer" @click="deleteTask(item.id)"> Delete </a>
+                    <a class="dropdown-item cursor-pointer" @click="deleteTask(item.id)">
+                      Delete
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -235,7 +242,7 @@ const submitStatusChange = async () => {
       await task.changeStatus(selectedTask.value.id, selectedStatus.value);
     }
     statusLoading.value = false;
-      hideModal();
+    hideModal();
   } catch (error) {
     statusLoading.value = false;
     alert(error?.response?.data?.message || "Something went wrong");

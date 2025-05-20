@@ -8,8 +8,17 @@ export const useTaskStore = defineStore("task", {
         tasks: [],
         task: null,
         params: {
+            isKanban: false,
             perPage: 5,
             page: 1,
+        },
+        kanban: {
+            pending: [],
+            "in-progress": [],
+            hold: [],
+            review: [],
+            cancel: [],
+            completed: [],
         },
     }),
     actions: {
@@ -47,12 +56,22 @@ export const useTaskStore = defineStore("task", {
                 });
         },
         async loadTasks(params = {}) {
-            this.tasks = [];
             await api
                 .get("/tasks", { params: params })
                 .then((res) => {
-                    console.log(res);
-                    this.tasks = res?.data?.data;
+                    if (params.isKanban) {
+                        console.log(res);
+                        if (res?.data?.data?.results?.task) {
+                            Object.entries(res?.data?.data?.results?.task).forEach(([status, tasks]) => {
+                                if (this.kanban[status]) {
+                                    this.kanban[status] = tasks;
+                                }
+                            });
+                        }
+                    } else {
+                        console.log(res);
+                        this.tasks = res?.data?.data;
+                    }
                 })
                 .catch((err) => {
                     console.error(err);

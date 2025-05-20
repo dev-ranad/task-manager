@@ -27,4 +27,24 @@ body {
 .cursor-pointer {
     cursor: pointer;
 }
+.kanban-scroll-wrapper {
+    overflow-x: auto;
+    overflow-y: auto;
+    padding-bottom: 1rem;
+}
+
+.kanban-column {
+    width: 300px;
+    flex: 0 0 auto;
+    min-height: 400px;
+}
+
+.kanban-card {
+    min-height: 300px;
+    max-height: 300px;
+    overflow-y: auto
+}
+
+.kanban-board .card:hover {
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1); }
 

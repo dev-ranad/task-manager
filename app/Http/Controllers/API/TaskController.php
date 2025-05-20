@@ -35,6 +35,17 @@ class TaskController extends Controller
         ])
             ->latest();
 
+        if ($request->has('isKanban') && $request->isKanban == 'true') {
+            return $this->successResponse(
+                $this->responseMessage('Task', 'index'),
+                [
+                    'results' => [
+                        'task' => $query->get()->groupBy('status'),
+                    ],
+                ]
+            );
+        }
+
         $paginated = $query->paginate($perPage);
 
         return $this->successResponse(

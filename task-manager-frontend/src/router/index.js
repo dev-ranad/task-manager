@@ -5,9 +5,9 @@ import Login from "../views/auth/Login.vue";
 import Register from "../views/auth/Register.vue";
 
 import Home from "../views/web/Home.vue";
-// import TaskDetail from "../views/admin/TaskDetail.vue";
 import Dashboard from "../views/admin/Dashboard.vue";
 import TaskList from "../views/admin/task/TaskList.vue";
+import TaskKanban from "../views/admin/task/TaskKanban.vue";
 import TaskDetail from "../views/admin/task/TaskDetail.vue";
 import TaskCreate from "../views/admin/task/TaskCreate.vue";
 import TaskEdit from "../views/admin/task/TaskEdit.vue";
@@ -38,6 +38,10 @@ const routes = [
             {
                 path: "task",
                 component: TaskList,
+            },
+            {
+                path: "task/kanban",
+                component: TaskKanban,
             },
             {
                 path: "task/create",

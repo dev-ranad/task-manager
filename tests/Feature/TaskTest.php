@@ -30,10 +30,24 @@ class TaskTest extends TestCase
 
         Task::factory()->count(20)->create();
 
-        $response = $this->getJson('/api/tasks?perPage=10&page=1');
+        $response = $this->getJson('/api/tasks?isKanban=false&perPage=10&page=1');
 
         $response->assertOk()
             ->assertJsonPath('data.meta.per_page', 10);
+    }
+    public function test_can_kanban_tasks()
+    {
+        Sanctum::actingAs($this->user);
+
+        Task::factory()->count(20)->create();
+
+        $response = $this->getJson('/api/tasks?isKanban=true');
+
+        $response->assertOk()
+        ->assertJsonStructure([
+                'message',
+                'data' => ['results' => ['task']],
+            ]);
     }
 
     public function test_can_store_a_task_with_attachments()
